@@ -1,5 +1,4 @@
-# Dazzle-Dashboard-Demo
-Sample project of the [React Dazzle](https://github.com/Raathigesh/Dazzle) dashboard library.
+# Create React Dashboard Demo Using React-Dazzle (https://github.com/Raathigesh/Dazzle).
 
 ## Usage
 
