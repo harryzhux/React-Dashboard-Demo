@@ -12,8 +12,8 @@ class ListTable extends React.Component {
         render: text => <InfoModal title={text} />,
       },
       {
-        title: 'Space',
-        dataIndex: 'space',
+        title: 'Status',
+        dataIndex: 'status',
       },
       {
         title: 'Result',

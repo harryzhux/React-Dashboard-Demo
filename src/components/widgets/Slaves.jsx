@@ -3,6 +3,7 @@ import ListTable from '../ListTable';
 
 class Slaves extends React.Component {
   render () {
+    const props = { ...this.props };
     const data = [
       {
         key: 'sl0',
@@ -53,9 +54,20 @@ class Slaves extends React.Component {
         address: '#suspended',
       },
     ];
-
+    const children = data.map((item, i) => {
+      const id = `job${i}`;
+      return (
+        <tr id={id} key={id}>
+          <td><a href=""><b>{item.name}</b></a></td>&nbsp; &nbsp; &nbsp; &nbsp;<td></td><td>{item.result}</td>
+        </tr>
+      );
+    });
     return (
-      <ListTable data={data} pagination={false} />
+      <table {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
+        <tbody>
+        {children}
+        </tbody>
+      </table>
     );
   }
 }

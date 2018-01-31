@@ -3,6 +3,7 @@ import ListTable from '../ListTable';
 
 class Workload extends React.Component {
   render () {
+    const props = { ...this.props };
     const data = [
       {
         key: 'wl1',
@@ -54,9 +55,20 @@ class Workload extends React.Component {
 	space: '     ',
       },
     ];
-
+    const children = data.map((item, i) => {
+      const id = `job${i}`;
+      return (
+        <tr id={id} key={id}>
+          <td><a href=""><b>{item.name}</b></a></td>&nbsp; &nbsp; &nbsp; &nbsp;<td></td><td>{item.result}</td>
+        </tr>
+      );
+    });
     return (
-      <ListTable data={data} pagination={false} />
+      <table {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
+        <tbody>
+        {children}
+        </tbody>
+      </table>
     );
   }
 }

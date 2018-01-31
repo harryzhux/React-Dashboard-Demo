@@ -12,7 +12,7 @@ import CustomFrame from './CustomFrame';
 import BarChart from './widgets/BarChart';
 import LineChart from './widgets/LineChart';
 import DoughnutChart from './widgets/DoughnutChart';
-import Test from './widgets/Test';
+import Messages from './widgets/Messages';
 import Workload from './widgets/Workload';
 import Slaves from './widgets/Slaves';
 import Resources from './widgets/Resources';
@@ -20,6 +20,7 @@ import Reports from './widgets/Reports';
 import Settings from './widgets/Settings';
 import VisitedSets from './widgets/VisitedSets';
 import RecentJobs from './widgets/RecentJobs';
+import LiveStream from './widgets/LiveStream';
 
 // We are using bootstrap as the UI library
 import 'bootstrap/dist/css/bootstrap.css';
@@ -49,9 +50,9 @@ class App extends Component {
           type: LineChart,
           title: 'LineChart',
         },
-        TestWidget: {
-          type: Test,
-          title: 'Test Widget',
+        MessagesWidget: {
+          type: Messages,
+          title: 'Messages',
         },
         WorkloadWidget: {
           type: Workload,
@@ -65,7 +66,11 @@ class App extends Component {
           type: Settings,
           title: 'Settings',
         },
-        ReportWidget: {
+        ResourcesWidget: {
+          type: Resources,
+          title: 'Resources',
+        },
+        ReportsWidget: {
           type: Reports,
           title: 'Reports',
         },
@@ -77,7 +82,10 @@ class App extends Component {
           type: RecentJobs,
           title: 'My Recent Jobs',
         },
-
+        LiveStreamWidget: {
+          type: LiveStream,
+          title: 'Live Event Stream',
+        },
       },
       // Layout of the dashboard
       layout: {
@@ -88,29 +96,43 @@ class App extends Component {
                 className: 'col-md-4 col-sm-4 col-xs-4',
                 widgets: [
                   {key: 'WorkloadWidget'},
+                  {key: 'MessagesWidget'}
+                ],
+              },
+              {
+                className: 'col-md-4 col-sm-4 col-xs-4',
+                widgets: [
                   {key: 'SlavesWidget'},
-                  {key: 'BarChartWidget'}
+                  {key: 'ReportsWidget'}
                 ],
               },
               {
                 className: 'col-md-4 col-sm-4 col-xs-4',
                 widgets: [
-                  {key: 'BarChartWidget'},
-                  {key: 'DoughnutChartWidget'},
-                  {key: 'LineChartWidget'}
-                ],
-              },
-              {
-                className: 'col-md-4 col-sm-4 col-xs-4',
-                widgets: [
-                  {key: 'VisitedSetsWidget'},
-                  {key: 'RecentJobsWidget'},
+                  {key: 'ResourcesWidget'},
                   {key: 'SettingsWidget'}
+                ],
+              },
+	    ]
+          },
+	  {
+            columns: [
+              {
+                className: 'col-md-4 col-sm-4 col-xs-4',
+                widgets: [
+                  {key: 'VisitedSetsWidget'}
+                ],
+              },
+              {
+                className: 'col-md-8 col-sm-8 col-xs-8',
+                widgets: [
+                  {key: 'RecentJobsWidget'}
                 ],
               },
 	    ]
           }
         ],
+
       },
       editMode: false,
       isModalOpen: false,

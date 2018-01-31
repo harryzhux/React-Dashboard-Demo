@@ -1,56 +1,59 @@
 import React from 'react';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import InfoModal from  '../InfoModal';
+import ListTable from '../ListTable';
 
-class SettingsContainer extends React.Component {
-
-  render() {
+class RecentJobs extends React.Component {
+  render () {
     const props = { ...this.props };
-    const settingsArray = [
+    const data = [
       {
-        icon: 'https://zos.alipayobjects.com/rmsportal/ScHBSdwpTkAHZkJ.png',
-        title: 'Server',
-        content: 'system configuration'
+        key: 'jl0',
+        status: 'Queued',
+        name: '000247813',
+        result: 'vw /home/hhzhu/vov/2017/linux64/scripts/vovboot vovsh -n -f 2018.01.24/sls_1516843440438.tcl > /dev/nul',
       },
       {
-        icon: 'https://zos.alipayobjects.com/rmsportal/NKBELAOuuKbofDD.png',
-        title: 'Database',
-        content: 'configure, start/stop database'
+        key: 'jl1',
+        status: 'Queued',
+        name: '000247814',
+        result: 'vw /home/hhzhu/vov/2017/linux64/scripts/vovboot vovsh -n -f 2018.01.24/sls_1516843440535.tcl > /dev/null',
       },
       {
-        icon: 'https://zos.alipayobjects.com/rmsportal/xMSBjgxBhKfyMWX.png',
-        title: 'Item3',
-        content: 'short description'
+        key: 'jl2',
+        status: 'Queued',
+        name: '000247815',
+        result: 'vw /home/hhzhu/vov/2017/linux64/scripts/vovboot vovsh -n -f 2018.01.24/sls_1516843440626.tcl > /dev/null',
       },
       {
-        icon: 'https://zos.alipayobjects.com/rmsportal/MNdlBNhmDBLuzqp.png',
-        title: 'Item4',
-        content: 'short description'
+        key: 'jl3',
+        status: 'Queued',
+        name: '000247816',
+        result: 'vw /home/hhzhu/vov/2017/linux64/scripts/vovboot vovsh -n -f 2018.01.24/sls_1516843440716.tcl > /dev/null',
       },
       {
-        icon: 'https://zos.alipayobjects.com/rmsportal/UsUmoBRyLvkIQeO.png',
-        title: 'Item5',
-        content: 'short description'
+        key: 'jl4',
+        status: 'Queued',
+        name: '000247817',
+        result: 'vw /home/hhzhu/vov/2017/linux64/scripts/vovboot vovsh -n -f 2018.01.24/sls_1516843440802.tcl > /dev/null',
       },
     ];
-    const children = settingsArray.map((item, i) => {
-      const id = `settings${i}`;
+    const children = data.map((item, i) => {
+      const id = `job${i}`;
       return (
-        <div id={id} key={id}>	
-          <InfoModal icon={item.icon} title={item.title} />
-          {item.content}
-        </div>
+        <tr id={id} key={id}>
+	  <td><a href="">{item.name}</a></td>
+	  <td>&nbsp;<b>{item.status}</b></td>
+	  <td>&nbsp;{item.result}</td>
+	</tr>
       );
     });
     return (
-      <div {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
+      <table {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
+        <tbody>
         {children}
-      </div>
+	</tbody>
+      </table>
     );
   }
 }
 
-
-export default SettingsContainer;
+export default RecentJobs;

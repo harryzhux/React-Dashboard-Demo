@@ -1,56 +1,53 @@
 import React from 'react';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import InfoModal from  '../InfoModal';
 
-class SettingsContainer extends React.Component {
+class Settings extends React.Component {
 
   render() {
     const props = { ...this.props };
     const settingsArray = [
       {
         icon: 'https://zos.alipayobjects.com/rmsportal/ScHBSdwpTkAHZkJ.png',
-        title: 'Server',
-        content: 'system configuration'
+        title: 'Actions',
+        content: 'save, reread, sanity, shutdown, ...'
       },
       {
         icon: 'https://zos.alipayobjects.com/rmsportal/NKBELAOuuKbofDD.png',
-        title: 'Database',
-        content: 'configure, start/stop database'
+        title: 'Administration',
+        content: 'configure, start/stop database, ...'
       },
       {
         icon: 'https://zos.alipayobjects.com/rmsportal/xMSBjgxBhKfyMWX.png',
-        title: 'Item3',
-        content: 'short description'
+        title: 'Network',
+        content: 'hosts, processes, file system, ...'
       },
       {
         icon: 'https://zos.alipayobjects.com/rmsportal/MNdlBNhmDBLuzqp.png',
-        title: 'Item4',
-        content: 'short description'
-      },
-      {
-        icon: 'https://zos.alipayobjects.com/rmsportal/UsUmoBRyLvkIQeO.png',
-        title: 'Item5',
-        content: 'short description'
+        title: 'Internal Data Structures',
+        content: 'server environemnet, config params, ... '
       },
     ];
     const children = settingsArray.map((item, i) => {
       const id = `settings${i}`;
       return (
-        <div id={id} key={id}>	
-          <InfoModal icon={item.icon} title={item.title} />
+        <tr id={id} key={id}>	
+          <td>
+            <InfoModal icon={item.icon} title={item.title} />
+          </td>
+          <td>
           {item.content}
-        </div>
+          </td>
+        </tr>
       );
     });
     return (
-      <div {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
+      <table {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
+        <tbody>
         {children}
-      </div>
+        </tbody>
+      </table>
     );
   }
 }
 
-
-export default SettingsContainer;
+export default Settings;

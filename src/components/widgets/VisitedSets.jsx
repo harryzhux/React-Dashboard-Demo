@@ -1,7 +1,4 @@
 import React from 'react';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import InfoModal from  '../InfoModal';
 
 class SettingsContainer extends React.Component {
@@ -11,43 +8,37 @@ class SettingsContainer extends React.Component {
     const settingsArray = [
       {
         icon: 'https://zos.alipayobjects.com/rmsportal/ScHBSdwpTkAHZkJ.png',
-        title: 'Server',
-        content: 'system configuration'
-      },
-      {
-        icon: 'https://zos.alipayobjects.com/rmsportal/NKBELAOuuKbofDD.png',
-        title: 'Database',
-        content: 'configure, start/stop database'
-      },
-      {
-        icon: 'https://zos.alipayobjects.com/rmsportal/xMSBjgxBhKfyMWX.png',
-        title: 'Item3',
-        content: 'short description'
-      },
-      {
-        icon: 'https://zos.alipayobjects.com/rmsportal/MNdlBNhmDBLuzqp.png',
-        title: 'Item4',
-        content: 'short description'
-      },
-      {
-        icon: 'https://zos.alipayobjects.com/rmsportal/UsUmoBRyLvkIQeO.png',
-        title: 'Item5',
-        content: 'short description'
+        title: 'System:node',
+        green: 574,
+        yellow: 8,
+	cyan: 53
       },
     ];
     const children = settingsArray.map((item, i) => {
-      const id = `settings${i}`;
+      const id = `visited${i}`;
       return (
-        <div id={id} key={id}>	
-          <InfoModal icon={item.icon} title={item.title} />
-          {item.content}
-        </div>
+        <tr id={id} key={id}>
+	  <td>
+            <InfoModal icon={item.icon} title={item.title} />
+	  </td>
+	  <td width="200" style={{backgroundColor:'green', textAlign:'center'}}>
+          {item.green}
+	  </td>
+	  <td width="5" style={{backgroundColor:'orange', textAlign:'center'}}>
+          {item.yellow}
+	  </td>
+	  <td width="25"style={{backgroundColor:'cyan', textAlign:'center'}}>
+          {item.cyan}
+	  </td>
+        </tr>
       );
     });
     return (
-      <div {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
-        {children}
-      </div>
+      <table {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
+        <tbody>
+          {children}
+	</tbody>
+      </table>
     );
   }
 }
