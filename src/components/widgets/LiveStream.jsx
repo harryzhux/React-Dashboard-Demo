@@ -6,11 +6,11 @@ class LiveStream extends React.Component {
   render() {
     const props = { ...this.props };
     const url = 'http://hhzhu-5510:9058/raw/microevents_json';
-    const renderEvent = event => <div>{ event }</div>
+    const renderEvent = event => <div>data: { event }</div>
     return (
-      <EventSource url={url}>
+      <ReactEventSource url={url} onEventSourceError={console.log}>
         { events => events.map(renderEvent) }
-      </EventSource>
+      </ReactEventSource>
     );
   }
 }
